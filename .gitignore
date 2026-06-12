@@ -1,0 +1,20 @@
+# OS generated files
+.DS_Store
+.localized
+Thumbs.db
+
+# IDE generated files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Build artifacts
+build/
+dist/
+*.log
+*.tmp
+
+# Project specific files
+*.json # 作業保存ファイルは含めない
