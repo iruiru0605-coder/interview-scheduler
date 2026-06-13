@@ -221,14 +221,122 @@ td.assigned:hover{outline:2px solid var(--sib);outline-offset:-2px;}
   </div>
 
   <div class="card">
-    <h2>（自動作成が使えない場合）手動で作るときの選択肢</h2>
+    <h2>（自動作成が使えない場合）手動でフォームを作る</h2>
+    <div class="hint warn">学校のGoogleアカウントで管理者がApps Scriptを制限している場合、自動作成がブロックされることがあります。その場合は、以下のとおり<b>手動で同じフォームを作れます（所要5〜10分）</b>。途中で作業を保存したいときはGoogleフォームの右上「︙」から「下書きを保存」できます。</div>
+
+    <h3>完成するフォームのイメージ</h3>
+    <div class="hint">全部で<b>11の質問</b>からなるフォームです。保護者は<b>児童1人につき1回</b>回答します（兄弟がいる家庭は人数分）。「兄弟をまとめて調整」で「はい」を選ぶと、同じ保護者名の回答同士が同じ日の近い時間に自動調整されます。</div>
+
+    <h3>設問一覧（このとおりに作ってください）</h3>
+    <div class="grid-wrap">
+      <table class="t">
+        <thead>
+          <tr><th>順番</th><th>設問名（タイトル）</th><th>形式</th><th>必須</th><th>選択肢・備考</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>児童生徒氏名</td>
+            <td>記述式（1行）</td>
+            <td>✔ 必須</td>
+            <td>説明文：フルネームで入力してください</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>学年</td>
+            <td>プルダウン</td>
+            <td>✔ 必須</td>
+            <td>選択肢：【①で登録した学年が自動で出ます。なければ手動で 1年・2年…6年 と入力】</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>組</td>
+            <td>プルダウン</td>
+            <td>✔ 必須</td>
+            <td>選択肢：【①で登録した組が自動で出ます。なければ 1組・2組…と入力】</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>出席番号</td>
+            <td>プルダウン</td>
+            <td>✔ 必須</td>
+            <td>選択肢：1〜40（数字を1行ずつ入力）</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>保護者氏名（姓）</td>
+            <td>記述式（1行）</td>
+            <td>✔ 必須</td>
+            <td>兄弟をまとめて調整したい場合は、全員分の回答で<b>まったく同じ書き方</b>で入力してもらう</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>保護者氏名（名）</td>
+            <td>記述式（1行）</td>
+            <td>✔ 必須</td>
+            <td>同上。姓と名を分けることで表記ゆれを減らす</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>兄弟姉妹の面談をまとめて調整しますか</td>
+            <td>ラジオボタン（1つだけ選択）</td>
+            <td>✔ 必須</td>
+            <td>選択肢：<br>１）はい（兄弟姉妹それぞれの回答で、保護者氏名を同じ書き方で入力してください）<br>２）いいえ（兄弟姉妹はいない・まとめる必要はない）</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>第1希望（日付）</td>
+            <td>プルダウン</td>
+            <td>✔ 必須</td>
+            <td>選択肢：【下の「日付の選択肢」からコピーして貼り付け】<br>※Googleフォームのプルダウンは、選択肢欄に複数行を貼り付けると一気に登録できます</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>第1希望（時間帯）</td>
+            <td>プルダウン</td>
+            <td>任意</td>
+            <td>選択肢の先頭に「指定なし（その日のいつでも可）」を手動で追加。その下に【下の「時間帯の選択肢」からコピーして貼り付け】</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>第2希望（日付・時間帯）</td>
+            <td colspan="2">第1希望と同じものを、もう1セット（合計で第3希望まで）</td>
+            <td>第2希望・第3希望の日付は必須ではなく「任意」でOK</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>連絡事項（任意）</td>
+            <td>記述式（段落）</td>
+            <td>任意</td>
+            <td>説明文の例：上の子の面談（○○中学校）と同じ日にしたい、17時以降は不可 など</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>フォームの説明文（おすすめ）</h3>
+    <div class="copybox" id="formDescription">お子様1人につき1回ずつ回答してください（兄弟姉妹がいる場合は人数分）。兄弟姉妹の面談を同じ日の近い時間にまとめたい場合は、全員分の回答で保護者氏名を同じ書き方で入力し、「まとめて調整しますか」で【はい】を選んでください。</div>
+    <button class="btn small ghost" onclick="copyBox('formDescription')">コピー</button>
+    <div class="hint">フォーム作成画面の「説明（任意）」欄に貼り付けてください。</div>
+
     <h3>日付の選択肢</h3>
     <div class="copybox" id="optDates"></div>
     <button class="btn small ghost" onclick="copyBox('optDates')">コピー</button>
+
     <h3>時間帯の選択肢</h3>
     <div class="copybox" id="optTimes"></div>
     <button class="btn small ghost" onclick="copyBox('optTimes')">コピー</button>
-    <div class="hint">Googleフォームのプルダウンは、選択肢欄に複数行を貼り付けると一気に登録できます。</div>
+
+    <h3>やってはいけないこと</h3>
+    <div class="hint warn">
+      <ul style="margin:4px 0;padding-left:1.2em;">
+        <li>設問の<b>順番を変えない</b>（ツールのCSV読み取りが列の順番に依存します）</li>
+        <li>設問名を変えると、ツールが列を自動判別できなくなる可能性があります</li>
+        <li>「第○希望」のセットは必ず<b>日付→時間帯の順</b>にしてください</li>
+        <li>回答の収集は「メールアドレスを収集する」にチェックを入れると、回答の修正が必要なときに保護者を特定しやすくなります（任意）</li>
+      </ul>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -446,16 +554,17 @@ function delClass(id){
 function upClass(id,key,val){ const c=state.classes.find(c=>c.id===id); if(c)c[key]=val; renderNGList(); }
 const GRADE_OPTS=['1','2','3','4','5','6'];
 const KUMI_OPTS=[...Array.from({length:15},(_,i)=>String(i+1)),'A','B','C','D','E','F','い','ろ','は','に'];
-function selOpts(list,cur){
+function selOpts(list,cur,noBlank){
   const l=list.includes(String(cur))||!cur?list:[String(cur),...list];
-  return `<option value="">--</option>`+l.map(v=>`<option value="${esc(v)}" ${String(cur)===v?'selected':''}>${esc(v)}</option>`).join('');
+  const blank = noBlank ? '' : `<option value="">--</option>`;
+  return blank + l.map(v=>`<option value="${esc(v)}" ${String(cur)===v?'selected':''}>${esc(v)}</option>`).join('');
 }
 function renderClasses(){
   $('classList').innerHTML = state.classes.sort((a,b)=>(a.grade-b.grade)||String(a.kumi).localeCompare(String(b.kumi),'ja')).map(c=>`
   <div class="class-card">
     <div class="head">
-      <label class="f"><select onchange="upClass(${c.id},'grade',this.value)">${selOpts(GRADE_OPTS,c.grade)}</select> 年</label>
-      <label class="f"><select onchange="upClass(${c.id},'kumi',this.value)">${selOpts(KUMI_OPTS,c.kumi)}</select> 組</label>
+      <label class="f"><select onchange="upClass(${c.id},'grade',this.value)">${selOpts(GRADE_OPTS,c.grade,true)}</select> 年</label>
+      <label class="f"><select onchange="upClass(${c.id},'kumi',this.value)">${selOpts(KUMI_OPTS,c.kumi,true)}</select> 組</label>
       <label class="f">担任 <input type="text" value="${esc(c.teacher)}" size="10" onchange="upClass(${c.id},'teacher',this.value)"></label>
       <button class="btn small danger" onclick="delClass(${c.id})">クラス削除</button>
     </div>
